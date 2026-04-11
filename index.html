@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Guia Técnico + PDCA + 5W2H + EVM | Orçamentação e Planejamento de Obras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cor-principal: rgb(39, 98, 141);
+            --cor-destaque: #2c7da0;
+            --cor-alternativa: #b45309;
+            --cor-fundo: #f4f7f6;
+            --cor-texto: #333333;
+            --cor-borda: #dddddd;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: var(--cor-principal);
+            color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffffff;
+            background-color: #ffffff;
+        }
+
+        .header-info {
+            flex: 1;
+            margin-left: 30px;
+            text-align: right;
+        }
+
+        .header-info h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-info h2 {
+            margin: 5px 0 15px 0;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .whatsapp-link {
+            display: inline-block;
+            background-color: #25D366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .whatsapp-link:hover {
+            background-color: #1ebe57;
+        }
+
+        main {
+            max-width: 860px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Accordion estilos */
+        .accordion-item {
+            margin-bottom: 1.8rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: white;
+        }
+
+        .accordion-header {
+            background: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: #f9f9f9;
+        }
+
+        .accordion-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--cor-principal);
+            border: none;
+        }
+
+        .toggle-icon {
+            font-size: 1.4rem;
+            transition: transform 0.3s;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding: 0 1.5rem;
+            border-top: 1px solid transparent;
+        }
+
+        .accordion-content.active-content {
+            max-height: 4500px; /* increased to accommodate new content */
+            padding: 1.2rem 1.5rem 2rem;
+            border-top-color: var(--cor-borda);
+        }
+
+        h3 {
+            color: #444;
+            margin-top: 25px;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .destaque {
+            background-color: #e9f0f5;
+            padding: 15px;
+            border-left: 4px solid var(--cor-principal);
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .alternativa-card {
+            background-color: #fff7ed;
+            border-left: 5px solid var(--cor-alternativa);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0 0.5rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .alternativa-card h4 {
+            color: var(--cor-alternativa);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ferramenta-box {
+            background: #f0f9ff;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #bcd9e6;
+        }
+
+        .ferramenta-box h4 {
+            color: var(--cor-principal);
+            margin-bottom: 0.8rem;
+        }
+
+        .example-btn {
+            background: none;
+            border: 1px solid var(--cor-principal);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 0.8rem;
+            color: var(--cor-principal);
+        }
+
+        .example-btn:hover {
+            background: var(--cor-principal);
+            color: white;
+        }
+
+        .glossary {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        .glossary h4 {
+            margin-bottom: 0.5rem;
+            color: var(--cor-principal);
+        }
+        .glossary p {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Botão voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--cor-principal);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #0f3b4f;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: var(--cor-principal);
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #a8d5e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .slogan {
+            font-style: italic;
+            font-size: 1.05rem;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 20px;
+            padding: 1.5rem;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 0.8rem;
+            right: 1rem;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-info {
+                margin-left: 0;
+                margin-top: 20px;
+                text-align: center;
+            }
+            main {
+                margin: 20px;
+                padding: 20px;
+            }
+            .accordion-header h2 {
+                font-size: 1.2rem;
+            }
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <img src="Gestão_SG.PNG" alt="Silvanio Gois" class="profile-pic" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2745%27 fill=%27%232c7da0%27/%3E%3Ctext x=%2750%27 y=%2767%27 font-size=%2740%27 text-anchor=%27middle%27 fill=%27white%27%3ESG%3C/text%3E%3C/svg%3E'">
+        <div class="header-info">
+            <h1>Guia Técnico de Orçamentação e Planejamento de Obras</h1>
+            <h2>Silvanio Gois</h2>
+            <a href="https://wa.me/5513988301094" target="_blank" class="whatsapp-link">Contato WhatsApp</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <p>Este é um guia técnico estruturado para profissionais que buscam rigor metodológico no planejamento e orçamentação de obras. O objetivo é transformar o projeto executivo em um plano de ataque viável, minimizando desvios e garantindo a saúde financeira do empreendimento.</p>
+
+    <!-- 1. Levantamento -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="1" role="button" aria-expanded="true">
+            <h2>1. Levantamento e Estudo de Base (O Alicerce)</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content active-content" id="accordionContent1" aria-hidden="false">
+            <p>Antes de abrir qualquer planilha, é fundamental o domínio completo do que será construído.</p>
+            <ul>
+                <li><strong>Análise dos Projetos:</strong> Revisão detalhada de arquitetura, estrutura, instalações e fundações para identificar possíveis interferências ou omissões.</li>
+                <li><strong>Visita Técnica:</strong> Verificação do terreno, acessos, disponibilidade de serviços públicos, logística de entrega e vizinhança.</li>
+                <li><strong>Definição do Memorial Descritivo:</strong> Documento que dita o padrão de acabamento e as especificações técnicas de cada material.</li>
+            </ul>
+            <div class="alternativa-card">
+                <h4><i class="fas fa-tools"></i> 🛠️ Alternativas para recursos limitados (Plano B)</h4>
+                <ul>
+                    <li>Imprimir projetos e sobrepor com papel vegetal para detectar conflitos.</li>
+                    <li>Usar Google Earth para avaliar logística do terreno.</li>
+                    <li>Memorial descritivo em Word/Excel com checklist.</li>
+                </ul>
+                <button class="example-btn" data-modal="modalBaseAlt">Exemplo prático (manual)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Orçamentação -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="2" role="button" aria-expanded="false">
+            <h2>2. Orçamentação: A Ciência dos Custos</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent2">
+            <p>O orçamento deve ser <strong>analítico</strong> e baseado na NBR 12721.</p>
+            <h3>A. Estrutura Analítica do Projeto (EAP)</h3>
+            <p>Divida a obra em pacotes de trabalho. Exemplo:</p>
+            <pre style="background:#f0f0f0; padding:8px; border-radius:8px;">
+1. Serviços Preliminares
+   1.1 Placa de obra
+   1.2 Canteiro
+2. Infraestrutura
+   2.1 Fundações
+   2.2 Tubulações enterradas
+3. Superestrutura
+   3.1 Lajes
+   3.2 Vigas
+            </pre>
+            <h3>B. Quantificação (Memória de Cálculo)</h3>
+            <p>Cálculo preciso das quantidades com base nos projetos. BIM (5D) é recomendado, mas não obrigatório.</p>
+            <h3>C. Composição de Custos Unitários (CPU)</h3>
+            <ul><li>Custos Diretos: materiais, mão de obra (com encargos), equipamentos.</li><li>Use tabelas SINAPI ou TCPO (lembre: SINAPI não inclui BDI).</li></ul>
+            <h3>D. BDI e Encargos</h3>
+            <p><strong>Fórmula correta do BDI:</strong> Preço de Venda = Custo Direto × (1 + BDI/100). O BDI deve contemplar administração central (AC), riscos (R), impostos (I), lucro (L).</p>
+            <p><strong>Exemplo:</strong> AC=6%, R=2%, I=10%, L=8% → BDI = (1 + (0,06+0,02+0,08)/(1-0,10)) - 1 = (1 + 0,16/0,9) - 1 = (1+0,1778)-1 = 0,1778 → 17,78%.</p>
+            <p><strong>Reserva de Contingência:</strong> Adicione de 5% a 10% sobre o custo direto para riscos conhecidos. Para riscos imprevistos, utilize reserva gerencial separada.</p>
+            <div class="alternativa-card">
+                <h4><i class="fas fa-calculator"></i> 🛠️ Alternativas (sem BIM)</h4>
+                <ul><li>Excel com fórmulas manuais.</li><li>SINAPI em PDF gratuito.</li><li>Cotação local com 3 fornecedores.</li></ul>
+                <button class="example-btn" data-modal="modalOrcAlt">Exemplo composição manual (corrigido)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Curva ABC -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="3" role="button" aria-expanded="false">
+            <h2>3. Curva ABC: Princípio de Pareto (80/20)</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent3">
+            <p>20% dos itens representam 80% do valor total. Classificação típica: <strong>Classe A (80% acumulado)</strong>, <strong>Classe B (15% seguinte)</strong>, <strong>Classe C (5% restante)</strong>. Foco nos itens Classe A.</p>
+            <div class="alternativa-card">
+                <h4><i class="fas fa-chart-simple"></i> 🛠️ Plano B</h4>
+                <p>Faça a curva ABC manualmente com Excel ou papel: liste itens, ordene decrescente por valor, calcule percentual e acumulado.</p>
+                <button class="example-btn" data-modal="modalABCAlt">Exemplo de cálculo manual</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Planejamento tempo + Lead Time -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="4" role="button" aria-expanded="false">
+            <h2>4. Planejamento: A Dimensão do Tempo</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent4">
+            <ul><li>Sequenciamento lógico (rede de precedências).</li><li>Caminho Crítico (CPM).</li><li>Cronograma Físico-Financeiro.</li><li><strong>Lead time:</strong> Para itens Classe A, inclua o prazo de entrega no cronograma. Exemplo: estrutura metálica com 60 dias de fabricação define a data do pedido.</li></ul>
+            <div class="alternativa-card">
+                <h4><i class="fas fa-gantt"></i> 🛠️ Alternativas acessíveis</h4>
+                <p>Project Libre (gratuito) ou Excel com gráfico de Gantt. Desenhe a rede no Draw.io.</p>
+                <button class="example-btn" data-modal="modalCronAlt">Modelo Excel Gantt</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Histograma + Produtividade -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="5" role="button" aria-expanded="false">
+            <h2>5. Histograma de Mão de Obra</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent5">
+            <p>Representação gráfica da quantidade de profissionais ao longo do tempo. Objetivos: nivelar recursos, dimensionar canteiro, prever recrutamento.</p>
+            <p><strong>Indicadores de produtividade:</strong> Dimensionamento = quantidade de serviço / produtividade diária. Exemplo: 100 m³ de concreto, produtividade média = 10 m³/dia → 10 dias com 1 equipe.</p>
+            <div class="alternativa-card">
+                <h4><i class="fas fa-chalkboard-user"></i> 🛠️ Plano B</h4>
+                <p>Monte tabela no Excel com meses vs profissões, gere gráfico de barras e faça nivelamento manual.</p>
+                <button class="example-btn" data-modal="modalHistAlt">Exemplo de planilha</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Curva S + EVM -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="6" role="button" aria-expanded="false">
+            <h2>6. Curva S e Análise de Valor Agregado (EVM)</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent6">
+            <p>A Curva S compara o progresso planejado vs real (físico/financeiro).</p>
+            <div class="destaque"><strong>Diagnóstico:</strong> Curva real abaixo = atraso; acima = adiantamento.</div>
+            <p><strong>Análise de Valor Agregado (EVM):</strong> Indicadores essenciais:<br>
+            - <strong>IDC (Índice de Desempenho de Custo)</strong> = Valor Agregado / Custo Real. IDC < 1 → custo acima do previsto.<br>
+            - <strong>IDP (Índice de Desempenho de Prazo)</strong> = Valor Agregado / Valor Planejado. IDP < 1 → atraso.<br>
+            Projeção do custo final = Orçamento total / IDC.</p>
+            <div class="alternativa-card">
+                <h4><i class="fas fa-chart-line"></i> 🛠️ Alternativa manual</h4>
+                <p>No Excel, calcule percentuais acumulados planejados e realize medição física quinzenal. Plote as duas curvas e calcule IDC/IDP.</p>
+                <button class="example-btn" data-modal="modalCurvaAlt">Exemplo passo a passo com EVM</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Medição e Pagamento (NBR 12721) -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="7" role="button" aria-expanded="false">
+            <h2>7. Medição e Pagamento (conforme NBR 12721)</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent7">
+            <p>A NBR 12721 exige discriminação de custos diretos e indiretos. A medição física deve ser feita por boletins de medição, comparando o realizado com o cronograma físico-financeiro.</p>
+            <ul>
+                <li><strong>Custos diretos:</strong> materiais, mão de obra, equipamentos alocados diretamente no serviço.</li>
+                <li><strong>Custos indiretos:</strong> administração local, segurança, engenharia, instalações provisórias – podem compor o BDI ou serem alocados como itens específicos na planilha.</li>
+            </ul>
+            <div class="alternativa-card">
+                <h4><i class="fas fa-file-invoice-dollar"></i> 🛠️ Exemplo de boletim</h4>
+                <p>Planilha com serviços, percentual executado, valor a faturar, e comparação com o planejado.</p>
+                <button class="example-btn" data-modal="modalMedicao">Modelo de boletim de medição</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Boas Práticas e Integração Final -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="8" role="button" aria-expanded="false">
+            <h2>8. Boas Práticas e Integração Final</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent8">
+            <p>Um planejamento técnico só é completo quando estas ferramentas conversam entre si no chamado <strong>Ciclo de Controle</strong>:</p>
+            <ol>
+                <li>A <strong>EAP</strong> define o que será feito.</li>
+                <li>A <strong>Curva ABC</strong> diz o que você não pode deixar faltar ou desperdiçar.</li>
+                <li>O <strong>Cronograma</strong> define o ritmo (incluindo lead times).</li>
+                <li>O <strong>Histograma</strong> garante que haverá braços para executar o ritmo definido.</li>
+                <li>A <strong>Curva S + EVM</strong> monitora se o financeiro e o físico estão andando juntos.</li>
+            </ol>
+            <p><strong>Boas práticas adicionais:</strong> Realize reuniões de alinhamento semanais com equipe técnica e financeira; mantenha um registro de lições aprendidas; adote uma matriz de riscos (probabilidade x impacto) com plano de contingência. Documente todas as alterações de escopo por meio de termos aditivos.</p>
+            <div class="alternativa-card">
+                <h4><i class="fas fa-sync-alt"></i> 🛠️ Plano B para integração</h4>
+                <p>Reuniões semanais com atas, planilhas Google Drive e quadro branco com indicadores. Use checklists de integração.</p>
+                <button class="example-btn" data-modal="modalIntegracao">Exemplo de checklist de integração</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. PDCA e 5W2H + Exemplo Integrado -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="9" role="button" aria-expanded="false">
+            <h2>9. Ferramentas de Gestão: PDCA e 5W2H</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent9">
+            <p>Para garantir a melhoria contínua e a execução eficaz do planejamento, duas ferramentas são essenciais: o <strong>ciclo PDCA</strong> (gestão da qualidade) e o <strong>5W2H</strong> (plano de ação detalhado).</p>
+
+            <div class="ferramenta-box">
+                <h4><i class="fas fa-chalkboard-user"></i> PDCA na Gestão de Obras</h4>
+                <p><strong>P (Plan - Planejar):</strong> Defina metas, cronograma, orçamento e indicadores (Curva S, ABC).</p>
+                <p><strong>D (Do - Executar):</strong> Execute conforme planejado, treine equipe, realize compras.</p>
+                <p><strong>C (Check - Verificar):</strong> Monitore a Curva S e os índices EVM, compare físico-financeiro, avalie desvios.</p>
+                <p><strong>A (Act - Agir):</strong> Corrija desvios, replaneje atividades críticas, padronize melhorias.</p>
+                <button class="example-btn" data-modal="modalPDCA">Ver exemplo PDCA completo</button>
+            </div>
+
+            <div class="ferramenta-box">
+                <h4><i class="fas fa-question-circle"></i> 5W2H – Plano de Ação para Obras</h4>
+                <p>Ferramenta simples que responde 7 perguntas para qualquer ação corretiva ou preventiva:</p>
+                <ul>
+                    <li><strong>What (O que?)</strong> – Ação a ser realizada.</li>
+                    <li><strong>Why (Por quê?)</strong> – Motivo/objetivo.</li>
+                    <li><strong>Where (Onde?)</strong> – Local da obra/setor.</li>
+                    <li><strong>When (Quando?)</strong> – Prazo/data.</li>
+                    <li><strong>Who (Quem?)</strong> – Responsável.</li>
+                    <li><strong>How (Como?)</strong> – Método/estratégia.</li>
+                    <li><strong>How much (Quanto custa?)</strong> – Orçamento da ação.</li>
+                </ul>
+                <button class="example-btn" data-modal="modal5W2H">Template 5W2H para obra</button>
+            </div>
+
+            <div class="destaque">
+                <strong>📌 Exemplo integrado (Desvio real):</strong> A Curva S mostrou atraso de 5% no 3º mês. No Check, identificou-se falta de pedreiros. Aplicou-se PDCA: Planejar ação corretiva. Em seguida, preencheu-se o 5W2H: O que? Contratar 2 pedreiros extras. Por quê? Recuperar atraso. Quando? Imediato. Quem? Mestre de obras. Como? Horas extras e novo turno. Quanto custa? R$ 3.200. Resultado: atraso reduzido para 1% no mês seguinte.
+            </div>
+
+            <div class="alternativa-card">
+                <h4><i class="fas fa-clipboard-list"></i> 🛠️ Como aplicar sem softwares</h4>
+                <p>Use quadros brancos, post-its, planilhas impressas ou arquivos do Excel/Word. O PDCA pode ser registrado em atas de reunião; o 5W2H preenchido em formulário simples e afixado no canteiro.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. Ferramentas Digitais Gratuitas (novo) -->
+    <div class="accordion-item">
+        <div class="accordion-header" data-accordion="10" role="button" aria-expanded="false">
+            <h2>10. Ferramentas Digitais Gratuitas</h2>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="accordion-content" id="accordionContent10">
+            <ul>
+                <li><strong>Planejamento:</strong> Project Libre, GanttProject, Trello (para 5W2H).</li>
+                <li><strong>Orçamento:</strong> Planilha Excel com composições prontas.</li>
+                <li><strong>Curva S e EVM:</strong> Fórmulas automáticas no Excel.</li>
+                <li><strong>Diagrama de rede:</strong> Draw.io (gratuito, integrado ao Google Drive).</li>
+            </ul>
+            <button class="example-btn" data-modal="modalFerramentas">Ver dicas de uso</button>
+        </div>
+    </div>
+
+    <!-- Glossário Técnico -->
+    <div class="glossary">
+        <h4><i class="fas fa-book-open"></i> Glossário Técnico</h4>
+        <p><strong>EAP:</strong> Estrutura Analítica do Projeto – decomposição hierárquica do trabalho.</p>
+        <p><strong>BDI:</strong> Benefícios e Despesas Indiretas – taxa que cobre administração, riscos, impostos e lucro.</p>
+        <p><strong>CPM:</strong> Caminho Crítico – sequência de atividades que determina a duração total do projeto.</p>
+        <p><strong>EVM:</strong> Gerenciamento do Valor Agregado – metodologia que integra escopo, prazo e custo.</p>
+        <p><strong>Lead time:</strong> Tempo entre o pedido e a entrega do material.</p>
+        <p><strong>Contingência:</strong> Reserva para riscos identificados (ex.: 5% do custo direto).</p>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Silvanio Gois - Todos os direitos reservados | <a href="https://www.silvaniogois.com.br/" target="_blank">ir ao Site</a></p>
+    <p class="slogan">Da estratégia à operação, conectando processos, pessoas e resultados</p>
+</footer>
+
+<!-- Botão voltar ao topo -->
+<a href="#" class="back-to-top" id="backToTopBtn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></a>
+
+<!-- MODAIS atualizados e novos -->
+<div id="modalBaseAlt" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Exemplo manual</h3><p>Sobreposição com papel vegetal identificou 3 interferências estrutura x hidráulica. Economia de R$ 7.000.</p></div></div>
+
+<div id="modalOrcAlt" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Composição manual (Excel) – corrigida</h3><p>1 m² de contrapiso:<br>– Argamassa: R$ 21,00<br>– Pedreiro (0,5 h × R$20/h) = R$10,00<br>– Servente (0,5 h × R$12/h) = R$6,00<br>– Subtotal mão de obra = R$16,00<br>– Encargos sociais (102% sobre mão de obra) = R$16,32<br>– Total mão de obra encargada = R$32,32<br><strong>Total por m² = R$53,32</strong></p></div></div>
+
+<div id="modalABCAlt" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Curva ABC no papel</h3><p>Lista com 40 itens: 8 itens (20%) representam 82% do valor. Foco: concreto, aço, blocos. Classe A até 80% acumulado.</p></div></div>
+
+<div id="modalCronAlt" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Gantt no Excel</h3><p>Baixe template gratuito "Excel Gantt Chart". Defina durações com base em produtividade histórica e lead times.</p></div></div>
+
+<div id="modalHistAlt" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Histograma e produtividade</h3><p>Mês3: 12 pedreiros, 6 serventes; Mês5: 20 pedreiros, 12 serventes. Pico = 32 homens. Produtividade média: 0,8 m³ concreto/homem.dia.</p></div></div>
+
+<div id="modalCurvaAlt" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Curva S + EVM</h3><p>Planejado: M1=5%, M2=18%, M3=40%; Real: M1=4%, M2=15%, M3=36%. Valor Agregado=36%, Custo Real=38% → IDC=0,95 (custos 5% acima), IDP=0,90 (atraso). Projeção final = Orçamento/0,95.</p></div></div>
+
+<div id="modalIntegracao" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Checklist de integração</h3><p>✓ EAP revisada mensalmente<br>✓ Curva ABC atualizada após compras<br>✓ Cronograma físico-financeiro comparado com Curva S<br>✓ Histograma compatível com prazos e produtividade<br>✓ Reunião semanal com atas.</p></div></div>
+
+<div id="modalPDCA" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Exemplo PDCA completo</h3><p><strong>P:</strong> Meta = concluir fundação em 20 dias.<br><strong>D:</strong> Execução com 4 pedreiros.<br><strong>C:</strong> Aos 10 dias, avanço 40% (previsto 50%). IDP=0,8.<br><strong>A:</strong> Adicionar 2 pedreiros e horas extras para recuperar.</p></div></div>
+
+<div id="modal5W2H" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Template 5W2H para obra</h3><p><strong>What:</strong> Refazer vedação com blocos estruturais.<br><strong>Why:</strong> Patologia identificada na alvenaria.<br><strong>Where:</strong> Fachada norte.<br><strong>When:</strong> Até 15/05.<br><strong>Who:</strong> Mestre Carlos.<br><strong>How:</strong> Uso de graute e vergas.<br><strong>How much:</strong> R$ 4.200.</p></div></div>
+
+<div id="modalMedicao" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Modelo de boletim de medição (NBR 12721)</h3><p>Item: Concreto armado – Planejado: 50 m³, R$ 20.000. Real medido: 45 m³ (90%). Valor a faturar: R$ 18.000. Desvio: -10%.</p></div></div>
+
+<div id="modalFerramentas" class="modal"><div class="modal-content"><span class="modal-close">&times;</span><h3>Dicas de ferramentas gratuitas</h3><p>- Project Libre: similar ao MS Project, exporta Gantt e rede.<br>- Trello: crie cartões com 5W2H e checklist.<br>- Excel para EVM: use as fórmulas =VA/CR e =VA/VP.</p></div></div>
+
+<script>
+    // Accordion com acessibilidade
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            const expanded = header.getAttribute('aria-expanded') === 'true' ? false : true;
+            header.setAttribute('aria-expanded', expanded);
+            if (content.classList.contains('active-content')) {
+                content.classList.remove('active-content');
+                icon.style.transform = 'rotate(0deg)';
+                content.setAttribute('aria-hidden', 'true');
+            } else {
+                content.classList.add('active-content');
+                icon.style.transform = 'rotate(180deg)';
+                content.setAttribute('aria-hidden', 'false');
+            }
+        });
+    });
+
+    // Modal
+    const modals = document.querySelectorAll('.modal');
+    const btns = document.querySelectorAll('.example-btn');
+    const closeSpans = document.querySelectorAll('.modal-close');
+
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.style.display = 'flex';
+    }
+    function closeModal(modal) { modal.style.display = 'none'; }
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const modalId = btn.getAttribute('data-modal');
+            if (modalId) openModal(modalId);
+        });
+    });
+    closeSpans.forEach(span => {
+        span.addEventListener('click', () => {
+            const modal = span.closest('.modal');
+            closeModal(modal);
+        });
+    });
+    window.addEventListener('click', (e) => {
+        modals.forEach(modal => { if (e.target === modal) closeModal(modal); });
+    });
+
+    // Botão voltar ao topo
+    const backBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backBtn.classList.add('show');
+        } else {
+            backBtn.classList.remove('show');
+        }
+    });
+    backBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Abrir primeiro accordion por padrão (já está ativo)
+    // Mas garantir que os ícones estejam consistentes
+    const firstHeader = document.querySelector('[data-accordion="1"]');
+    if(firstHeader) firstHeader.setAttribute('aria-expanded', 'true');
+</script>
+</body>
+</html>
